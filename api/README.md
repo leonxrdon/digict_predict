@@ -1,55 +1,72 @@
-# Digit Recognition API
+# API de Reconocimiento de Dígitos
 
-Este proyecto implementa un modelo de reconocimiento de dígitos utilizando **TensorFlow** y **FastAPI**. El modelo es capaz de predecir dígitos a partir de imágenes de la base de datos MNIST.
+Este proyecto proporciona una aplicación web y una API para reconocer dígitos escritos a mano. Los usuarios pueden dibujar un dígito en un lienzo o cargar una imagen de un dígito, y la aplicación predecirá el dígito utilizando un modelo de aprendizaje automático preentrenado.
+
+## Características
+
+- **Interfaz Web**: Una interfaz fácil de usar para dibujar dígitos o cargar imágenes.
+- **API**: Una API RESTful para el reconocimiento de dígitos.
+- **Modelo**: Utiliza un modelo de TensorFlow/Keras entrenado en conjuntos de datos de dígitos escritos a mano.
 
 ## Requisitos
 
-Asegúrate de tener Python 3.8 o superior instalado en tu sistema. Luego, instala las dependencias necesarias con:
+- Python 3.8 o superior
+- Paquetes de Python requeridos (instalar con `requirements.txt`):
+## Instalación
 
-```bash
-pip install -r requirements.txt
+1. Clona el repositorio:
+     ```bash
+     git clone https://github.com/leonxrdon/digit_predict.git
+     cd digit_predict
+     ```
+
+2. Crea un entorno virtual y actívalo:
+     ```bash
+     python -m venv venv
+     venv\Scripts\activate  # En Windows
+     source venv/bin/activate # En Linux
+     ```
+
+3. Instala las dependencias requeridas:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+4. Asegúrate de que el modelo preentrenado esté ubicado en `api/model.h5`.
+
+## Ejecución del Proyecto
+
+1. Inicia el servidor Flask:
+     ```bash
+     python app.py
+     ```
+
+2. Abre tu navegador y navega a:
+     ```
+     http://127.0.0.1:5003/
+     ```
+3. Dibuja el dígito y mira el resultado
+
+## Estructura del Proyecto
+
 ```
-El archivo `requirements.txt` debe contener las librerías necesarias, como `tensorflow`, `fastapi`, `uvicorn`, `pillow`, entre otras.
-
-## Ejecutando la API
-
-Para iniciar la API y probar el modelo de predicción de dígitos, ejecuta el siguiente comando:
-```bash
-uvicorn api:app --reload
+api/
+├── app.py              # Lógica principal de la API
+├── utils.py            # Funciones de apoyo
+├── templates/          # Plantillas HTML para la interfaz web
+│   └── index.html
+├── static/             # Archivos estáticos (CSS, JS)
+├── model.h5            # Archivo del modelo
+├── README.md           # Documentación del proyecto
+└── requirements.txt    # Dependencias de Python
+notebook/
+├── model.h5            # Archivo del modelo
+├── numbers.ipynb       # Notebook de entrenamiento
+README.md               # Información sobre el proyecto
 ```
 
-Este comando iniciará el servidor en el puerto 8000 por defecto. Ahora puedes acceder a la API en `http://127.0.0.1:8000`.
+## Características
 
-## Probar el Modelo
-
-1. Coloca la imagen que deseas probar en la carpeta `test` (que debe contener imágenes para hacer las predicciones).
-   
-2. Para hacer una predicción utilizando el modelo, ejecuta el archivo `client.py`:
-```bash
-python client.py
-```
-
-El archivo `client.py` se encargará de enviar la imagen al endpoint de la API (`/predict/`) y te mostrará el dígito predicho por el modelo.
-
-### Estructura de la Carpeta
-
-- `api.py`: Código de la API con FastAPI para servir el modelo.
-- `client.py`: Cliente para enviar una imagen y obtener la predicción.
-- `test/`: Carpeta que contiene las imágenes que deseas probar.
-
-## Ejemplo de Uso
-
-Para probar la API con una imagen:
-
-1. Coloca una imagen de un dígito dentro de la carpeta `test/`.
-2. Ejecuta el `client.py` para obtener la predicción.
-
-El modelo devolverá un JSON con el dígito predicho.
-
-### Predicción
-
-Cuando envíes una imagen a la API, el formato de respuesta será algo como:
-```json
-{ "digit": 5 }
-```
-Este valor corresponde al dígito que el modelo predijo a partir de la imagen enviada.
+- **Web Interface**: A user-friendly interface for drawing digits or uploading images.
+- **API**: A RESTful API for digit recognition.
+- **Model**: Uses a TensorFlow/Keras model trained on handwritten digit datasets.

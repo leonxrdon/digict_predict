@@ -1,0 +1,19 @@
+canvas {
+    width: 500px; /* Aumentar tamaño del canvas */
+    height: 500px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#predictionResult {
+    text-align: left;
+}
+
