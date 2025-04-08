@@ -46,6 +46,8 @@ Este proyecto proporciona una aplicación web y una API para reconocer dígitos 
      http://127.0.0.1:5003/
      ```
 3. Dibuja el dígito y mira el resultado
+   
+![predict](https://github.com/user-attachments/assets/2b7a1e06-4634-48bb-b33f-befc02e064b0)
 
 ## Estructura del Proyecto
 
